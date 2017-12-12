@@ -1,52 +1,166 @@
 package com.example.shilpysamaddar.demotexttospeech;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
 
+    private RelativeLayout main_layout;
+    private TextInputLayout txtText_hint;
+    private ImageView speak,stop_speak;
     private TextToSpeech tts;
     private Button btnSpeak;
     private EditText txtText;
     String googleTtsPackage = "com.google.android.tts", picoPackage = "com.svox.pico";
+    private final int REQ_CODE_SPEECH_INPUT = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        main_layout= (RelativeLayout) findViewById(R.id.main_layout);
+        txtText_hint= (TextInputLayout) findViewById(R.id.txtText_hint);
+        speak= (ImageView) findViewById(R.id.speak);
+        stop_speak= (ImageView) findViewById(R.id.stop_speak);
+        txtText_hint.setHint("Text to speak");
+        // onCreate
+        AnimationDrawable animationDrawable =(AnimationDrawable)main_layout.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         tts = new TextToSpeech(this, this);
-
         btnSpeak = (Button) findViewById(R.id.btnSpeak);
-
         txtText = (EditText) findViewById(R.id.txtText);
-
         btnSpeak.setOnClickListener(new View.OnClickListener() {
-
             @Override
-            public void onClick(View arg0) {
+            public void onClick(View v) {
                 speakOut();
+                startAnimations();
+                ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(v, "scaleX", 1.0f,0.94f);
+                ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(v, "scaleY", 1.0f,0.96f);
+                scaleDownX.setDuration(150);
+                scaleDownY.setDuration(150);
+                scaleDownX.setRepeatCount(1);
+                scaleDownY.setRepeatCount(1);
+                scaleDownX.setRepeatMode(ValueAnimator.REVERSE);
+                scaleDownY.setRepeatMode(ValueAnimator.REVERSE);
+                scaleDownX.setInterpolator(new DecelerateInterpolator());
+                scaleDownY.setInterpolator(new DecelerateInterpolator());
+                AnimatorSet scaleDown = new AnimatorSet();
+                scaleDown.play(scaleDownX).with(scaleDownY);
+                scaleDown.start();
+
             }
 
         });
+        speak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                promptSpeechInput();
+            }
+        });
 
+        stop_speak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopAnimation();
+                if (tts != null) {
+                    tts.stop();
+                }
+                if(spokenString!=null) {
+                    spokenString="";
+                    txtText.setText(spokenString);
+                    txtText.setSelection(0);
+                }
+            }
+        });
+    }
+
+    private void startAnimations(){
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(stop_speak, "alpha",  0f, 1f);
+        fadeOut.setDuration(1500);
+        fadeOut.start();
+        stop_speak.setVisibility(View.VISIBLE);
+    }
+
+    private void stopAnimation(){
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(stop_speak, "alpha",  1f, 10f);
+        fadeOut.setDuration(1200);
+        fadeOut.start();
+        stop_speak.setVisibility(View.GONE);
+    }
+
+    private String spokenString="";
+
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "say something");
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),"Your device does not support this language",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    spokenString=" "+result.get(0);
+                    if(spokenString!=null) {
+                        txtText.setText(spokenString);
+                        txtText.setSelection(txtText.getText().length());
+                    }
+                }
+                break;
+            }
+
+        }
     }
 
     @Override
@@ -126,8 +240,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         if (status == TextToSpeech.SUCCESS) {
 
             int result = tts.setLanguage(new Locale("hin", "IND", "variant"));
-            if (result == TextToSpeech.LANG_MISSING_DATA
-                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("TTS", "This Language is not supported");
             } else {
                 btnSpeak.setEnabled(true);
@@ -141,7 +254,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 
     private void speakOut() {
-
         String text = txtText.getText().toString();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             tts.speak(text,TextToSpeech.QUEUE_FLUSH,null,null);
@@ -151,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 }
 
-//
+
 //public class MainActivity extends AppCompatActivity {
 //
 //    private TextToSpeech tts;

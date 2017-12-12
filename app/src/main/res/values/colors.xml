@@ -1,6 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+    <color name="Orange">#f87800</color>
+    <color name="liteOrange">#a89800</color>
+    <color name="veryliteOrange">#30a89800</color>
+    <color name="progressbarGreen">#02b5a2</color>
+    <color name="Green">#1A5B4C</color>
+    <color name="DimGreen">#008f80</color>
+    <color name="StatusBarColor">#009989</color>
+    <color name="dGreen">#01cfc2</color>
+    <color name="LiteGreen">#01b5a2</color>
+    <color name="LiteGreend">#02b7a6</color>
+    <color name="secondry_litegreen">#05a5a2</color>
+    <color name="LiteGreen_transparentd">#a001b5a2</color>
+    <color name="LiteGreen_transparente">#d501b5a2</color>
+    <color name="LiteGreen_transparent">#8001b5a2</color>
+    <color name="LiteGreen_moretransparent">#5001b5a2</color>
+    <color name="LiteGreen_moretransparenta">#2001b5a2</color>
+    <color name="fulltransparent">#0001b5a2</color>
+    <color name="whitelight">#fefefe</color>
+    <color name="whitelighta">#fcfcfc</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white_transparent">#80ffffff</color>
+    <color name="white_transparentb">#60ffffff</color>
+    <color name="whitelightb">#9ffcfcfc</color>
+    <color name="white_transparenta">#20000000</color>
+    <color name="DimGreena">#a0008f80</color>
+    <color name="whitelightc">#eeeeee</color>
+
+    <color name="linkcolor">#0000EE</color>
+
+
+
+    <color name="fbBlue">#3b5998</color>
+    <color name="whatsappGreen">#43d854</color>
+    <color name="ReviewbarColor">#555555</color>
+
+    <color name="contestDateColor">#58697d</color>
+    <color name="DarkGray">#777777</color>
+    <color name="DarkGray_a">#aaaaaa</color>
+    <color name="LiteGray">#cccccc</color>
+    <color name="LiteGrayz">#dcdcdc</color>
+    <color name="LiteGrayNew">#ececec</color>
+    <color name="MoreLiteGray">#50cccccc</color>
+    <color name="MoreLiteGrayc">#90cccccc</color>
+    <color name="MoreLiteGrayd">#b0cccccc</color>
+    <color name="MoreLiteGrayb">#30cccccc</color>
+    <color name="veryLiteGray">#cFeeeeee</color>
+    <color name="midGray">#aa77aa</color>
+    <color name="QuizBgGray">#444444</color>
+    <color name="LiteBgGray">#eeeeee</color>
+    <color name="Gray">#333333</color>
+    <color name="Blue">#3C5A9A</color>
+    <color name="Bluet">#a03C5A9A</color>
+    <color name="Red">#d9534f</color>
+    <color name="Redt">#a0d9534f</color>
+    <color name="DarkRed">#802626</color>
+    <color name="RedBorder">#d43f3a</color>
+    <color name="DarkGreen">#2F820C</color>
+    <color name="ParrotGreen">#5cb85c</color>
+    <color name="ParrotGreenBorder">#4cae4c</color>
+    <color name="yellow">#ffba01</color>
+    <color name="yellowlite">#a0ffba01</color>
+    <color name="yellowlitea">#70ffba01</color>
+    <color name="progress_blue">#003AFA</color>
+    <color name="progress_bluestart">#10AAFA</color>
+    <color name="Graynew">#333333</color>
+    <color name="progress_bluestarta">#60223AFA</color>
+    <color name="clear_red">#ff1010</color>
+
+    <color name="popupBackGroundf">#e8000000</color>
+
+    <color name="Graya">#222222</color>
+    <color name="newgray">#343434</color>
+
+    <color name="popupBackGround">#C0000000</color>
+    <color name="popupBackGroundb">#80000000</color>
+    <color name="progressback">#6001b5a2</color>
+    <color name="popupBackGrounnew">#D0000000</color>
+    <color name="popupBackGroundwhite">#50000000</color>
+
+    <color name="QuizBgGraya">#555555</color>
+    <color name="popupBackGroundc">#60000000</color>
+    <color name="popupBackGroundd">#40000000</color>
+    <color name="popupBackGrounde">#30000000</color>
+    <color name="Redstatusbar">#9fff0000</color>
+    <color name="popupBackGroundwhitea">#50aaaaaa</color>
+
+
+
+    <color name="MoreLiteGraya">#dddddd</color>
+
+    <color name="splash_screencolora">#00ACC1</color>
+    <color name="splash_screencolorb">#BA68C8</color>
+    <color name="splash_screencolorc">#FDD835</color>
+    <color name="splash_screencolord">#dddddd</color>
+    <color name="light_red">#D50000</color>
+
+
+
+
+    <color name="whiteback">#40ffffff</color>
+
+    <color name="black_semi_transparent">#41000000</color>
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#808080</color>
+    <color name="whitea">#ffffff</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="white_presseda">#f8f8f8</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#805677fc</color>
+    <color name="blue_transparent">#A1000000</color>
+    <color name="blue_semi_transparent_pressed">#80738ffe</color>
+    <color name="black_transparent">#B0000000</color>
+    <color name="black_transparent_dark">#D0000000</color>
+    <color name="black_transparent_darka">#E6000000</color>
+    <color name="newblack_transparent">#60000000</color>
+    <color name="newblack_transparenta">#10000000</color>
+
+
+
+
+
+    <!-- for these colors uisng chart-->
+    <color name="lgreen">#01b5a2</color>
+    <color name="lorange">#ffaa01</color>
+    <color name="ldorange">#f87800</color>
+    <color name="lred">#e84c3d</color>
+    <color name="lblue">#2980b9</color>
+    <color name="lblack">#333333</color>
+    <color name="lgray">#777777</color>
+    <color name="lgraya">#999999</color>
+    <color name="lviolet">#cc5fff</color>
+    <color name="azure">#007FFF</color>
+    <color name="violet">#7F00FF</color>
+    <color name="LiteBlue">#4395d4</color>
+    <color name="offwhite">#fdfdfd</color>
+    <color name="LiteBlue_a">#904395d4</color>
+
+    <!--learning path colors-->
+    <color name="learningpathbackcolora">#505050</color>
+    <color name="learningpathbackcolorb">#454545</color>
+    <color name="learningpathbackcolorc">#404040</color>
+    <color name="learningpathbackcolord">#353535</color>
+    <color name="learningpathbackcolore">#303030</color>
+
+
+    <array name="myProgresColor">
+        <item>@color/lgreen</item>
+        <item>@color/lorange</item>
+        <item>@color/ldorange</item>
+        <item>@color/lred</item>
+        <item>@color/lblue</item>
+        <item>@color/lblack</item>
+        <item>@color/lgray</item>
+        <item>@color/lviolet</item>
+        <item>@color/azure</item>
+        <item>@color/violet</item>
+
+    </array>
+
+    <array name="learningmapBackColors">
+        <item>#01b5a2</item>
+        <item>#ffaa01</item>
+        <item>#80f87800</item>
+        <item>#807F00FF</item>
+    </array>
+
+    <color name="loginscrren_buttoncolor">#a001b5a2</color>
+    <color name="loginscrren_textcolor">#ffffff</color>
+    <color name="splashscreen_textcolor">#f1f1f1</color>
+    <color name="loginscrren_hintcolor">#cccccc</color>
+
+    <color name="yellowv">#ffd200</color>
+    <color name="yellowa">#ffe373</color>
+
+    <color name="redv">#ee8881</color>
+    <color name="reda">#ee6855</color>
+
+    <color name="redbottom">#b50a02</color>
+    <color name="redtop">#a30000</color>
+
+    <color name="redbottoma">#e40000</color>
+    <color name="redtopa">#8d0707</color>
+
+
+
+
+
 </resources>
