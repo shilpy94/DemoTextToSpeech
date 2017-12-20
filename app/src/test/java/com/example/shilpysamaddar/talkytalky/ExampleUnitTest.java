@@ -1,4 +1,4 @@
-package com.example.shilpysamaddar.demotexttospeech;
+package com.example.shilpysamaddar.talkytalky;
 
 import org.junit.Test;
 

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">DemoTextToSpeech</string>
+    <string name="app_name">Talky-Talky</string>
+    <string name="admobid">ca-app-pub-9678916816267507~8630254593</string>
 </resources>
