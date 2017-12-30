@@ -1,4 +1,4 @@
-package com.example.shilpysamaddar.talkytalky;
+package com.shinion.shilpysamaddar.talkytalky;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
